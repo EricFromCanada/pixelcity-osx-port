@@ -575,7 +575,7 @@ static void addToMesh(float x, float y, float z, float u, float v, Mesh *mesh)
     addToMesh(x1, y2, z1, u, v2, _mesh);
     
     quad_strip  qs;
-    for(int i=0; i<=10; i++) {
+    for(int i=0; i<10; i++) {
         qs.index_list.push_back(i);
     }
     [_mesh addQuadStrip:qs];
