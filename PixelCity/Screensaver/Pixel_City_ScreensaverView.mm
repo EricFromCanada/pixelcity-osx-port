@@ -33,6 +33,15 @@ static  NSString * const moduleName = @"paw.PixelCity_Screensaver",
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
+    if (!isPreview) {
+      [[NSDistributedNotificationCenter defaultCenter]
+          addObserverForName: @"com.apple.screensaver.willstop"
+                      object: nil
+                       queue: nil
+                  usingBlock:^(NSNotification *n) {
+          [[NSApplication sharedApplication] terminate: self];
+        }];
+    }
     if (self)
     {
         [self registerDefaultPreferences];
